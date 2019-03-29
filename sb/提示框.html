@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/zhAlert.js"></script>
+
+    <link rel="stylesheet" href="css/zhAlert.css">
+</head>
+
+<style>
+    body{
+        height: 2000px;
+        transition: all 0.5s ease 0s;
+
+    }
+
+
+    p{
+        color: grey;
+        display: none;
+    }
+
+</style>
+
+<body>
+<div class="floor_alertShow">
+    <label>底部提示框</label>
+</div>
+
+<div class="shade_alertShow">
+    <label>遮罩层提示框</label>
+</div>
+
+<div class="shadeSure_alertShow">
+    <label>遮罩层确认框</label>
+</div>
+
+<div class="sb">
+    <label>sssssss</label>
+</div>
+
+</body>
+
+<script>
+    $(function () {
+        $(".shadeSure_alertShow").click(function () {
+            sure_alertGo({
+                title:"确定要删除吗",
+                content:"数据无价，谨慎操作！",
+                off:"取消",
+                ok:"确定",
+                ok_title:"Good！",//可选
+                ok_content:"已执行您命令的操作",//可选
+                success:function (res) {
+                    if (res.cancel) {
+                        console.warn("你点击了确定" + JSON.stringify(res));
+                    } else {
+                        console.warn("你点击了取消" + JSON.stringify(res));
+                    }
+                }
+            });
+        })
+
+
+        $(".shade_alertShow").click(function () {
+            shade_alertGo1({
+                title:"标题",
+                content:"今天天气不是很好ww的说",
+                titleColor:"red",//可选
+                btnCon:"知道啦"//可选
+            })
+        })
+
+
+
+        $(".floor_alertShow").click(function () {
+            floor_alertGo({
+                content:"你真的了解我吗",
+                background:"wheat",
+                color:"grey",
+            })
+        })
+
+
+    })
+
+</script>
+
+</html>
